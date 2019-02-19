@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}uwu{% endblock %}
+{% block content %}
+<head>hi
+  <meta name="wa4e" content="149e9677a5989fd342ae44213df68868">
+</head> 
+<p>:(</p>
+{% if user.is_authenticated %}
+<p>
+<ul>
+    <li>Try <a href="autos">Autos Crud</a></li>
+</ul>
+</p>
+<p><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></p>
+{% else %}
+<p><a href="{% url 'login'%}?next={{request.path}}">Please log in</a></p>
+{% endif %}
+{% endblock %}
