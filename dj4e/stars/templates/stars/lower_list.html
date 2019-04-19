@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>List</h1>
+  {% if lower_list %}
+  <ul>
+    {% for lower in lower_list %}
+      <li>
+          {{ lower.nickname }} ({{ lower.higher }})
+          (<a href="{% url 'lower_update' lower.id %}">Update</a> |
+          <a href="{% url 'lower_delete' lower.id %}">Delete</a>) <br/>
+          {{ lower.mass }} ({{ lower.distance }})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no stars in the library.</p>
+  {% endif %}
+  <p>
+    {% if higher_count > 0 %}
+      <a href="{% url 'lower_create' %}">Add a star</a>
+    {% else %}
+      Please add a type before you add this.
+    {% endif %}
+  </p>
+  <p>
+  <a href="{% url 'higher_list' %}">View types</a> ({{ higher_count }}) |
+    <a href="{% url 'higher_create' %}">Add a type</a>
+  </p>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>List</h1>
+  {% if higher_list %}
+  <ul>
+    {% for higher in higher_list %}
+      <li>
+          {{ higher.name }}
+         (<a href="{% url 'higher_update' higher.id %}">Update</a> |
+          <a href="{% url 'higher_delete' higher.id %}">Delete</a>)
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no types in the library.</p>
+  {% endif %}
+  <p><a href="{% url 'higher_create' %}">Add a type</a></p>
+  <p>
+    <a href="{% url 'main_list' %}">Back to subpage</a>
+  </p>
+{% endblock %}
